@@ -22,6 +22,7 @@
 		}
 
 		var sortingInProgress;
+		var disabled = false;
 		var ROOTS_MAP = Object.create(null);
 		// window.ROOTS_MAP = ROOTS_MAP; // for debug purposes
 
@@ -55,6 +56,14 @@
 				this.sortingInProgress = function(){
 					return sortingInProgress;
 				};
+
+				this.isDisabled = function() {
+					return disabled;
+				};
+
+				$scope.$watch($attrs.svDisabled, function(newState) {
+					disabled = newState;
+				});
 
 				if($attrs.svGrid){ // sv-grid determined explicite
 					isGrid = $attrs.svGrid === "true" ? true : $attrs.svGrid === "false" ? false : null;
@@ -390,7 +399,7 @@
 				function onMousedown(e){
 					touchFix(e);
 
-					if($controllers[1].sortingInProgress()) return;
+					if($controllers[1].sortingInProgress()|| $controllers[1].isDisabled()) return;
 					if(e.button != 0 && e.type === 'mousedown') return;
 
 					moveExecuted = false;

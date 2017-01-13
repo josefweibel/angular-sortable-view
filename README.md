@@ -45,6 +45,7 @@ The API is declarative. There are four directives (hooked on attributes) that ne
 					<li>`$index` is the index of the $item in $part</li>
 				</ul>
 			</li>
+			<li>`sv-disabled` - When the expression passed as a value of that attribute will be truthy then the elements won't be draggable anymore until the value is falsy again.</li>
   * `sv-part` - this attribute should be placed on an element that is a container for the `ngRepeat`'ed elements. Its value should be the same as the right hand side expression in `ng-repeat` attribute.
   * `sv-element` - this attribute should be placed on the same element as `ng-repeat` attribute. Its (optional) value should be an expression that evaluates to the options object.
   * `sv-handle` - this attribute is optional. If needed it can be placed on an element within the sortable element. This element will be the handle for sorting operations.
